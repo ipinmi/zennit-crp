@@ -27,24 +27,27 @@ eyelids, and pronounced tear sacs next to a large knobby nose.
 
 ![text](images/overview.png "Title")
 
-### 🌊 Concepts are like waves in the sea  
+### 🌊 Concepts are like waves in the sea
+
 Typically, backpropagation-based attribution methods iteratively propagate attribution scores from one network output of choice through all hidden units of a neural network towards the model input, without consideration for the specific
-role and semantic meaning of latent structures of the model involved in the inference process. 
+role and semantic meaning of latent structures of the model involved in the inference process.
 
 Contemporary deep learning literature, however, agrees that latent
 structures of neural networks are capable of encoding abstract human-understandable concepts with distinct semantics, especially in higher layers. The influence of each concept on the final prediction is superimposed, like waves in the sea, and in the final heatmap all these information flows are mixed together, effectively hiding the individual contribution of latent concepts and rendering their specific meaning
 inaccessible to the human observer.
 
-### 🏄 Disentangling Attribution Flows 
-With CRP, we propose a method to disentangle the attribution flows associated with concepts learned by the model via conditional backpropagation i.e. masking of relevance flows, resulting in explanations being presented as distinct concept-conditional 
+### 🏄 Disentangling Attribution Flows
+
+With CRP, we propose a method to disentangle the attribution flows associated with concepts learned by the model via conditional backpropagation i.e. masking of relevance flows, resulting in explanations being presented as distinct concept-conditional
 relevance maps for network units that are most relevant for the prediction.
 
 ### 🔍 Revealing the meaning of a concept
+
 A canonical approach for gaining insight into the meaning and function
-of latent model structures is Activation Maximization (ActMax) 
+of latent model structures is Activation Maximization (ActMax)
 for generating or selecting samples as representations for concepts encoded in hidden space. We find, however, that (maximizing) the activation of a latent encoding by a given data point does not always correspond to its utility to the model in an inference context, as adversarial examples demonstrate - putting the faithfulness of activation-based example selection
 for latent concept representation into question.
-We therefore introduce Relevance Maximization (RelMax), as an alternative measure to ActMax, with the objective to maximize the relevance criterion for the selection of representative samples for latent model features. 
+We therefore introduce Relevance Maximization (RelMax), as an alternative measure to ActMax, with the objective to maximize the relevance criterion for the selection of representative samples for latent model features.
 
 ![text](images/rel_vs_act.png "Title")
 
@@ -53,6 +56,7 @@ We therefore introduce Relevance Maximization (RelMax), as an alternative measur
 (Right) ActMax suggests that the neuron's function consists of the detection of thin white lines, since spider webs or whiskers are visible in the images. On the other hand, samples drawn to maximize relevance mostly depict written characters. Thus, activation indicates which general pattern a filter activates, whereas relevance clarifies its specific usage in classification.
 
 ### 📃 Citation
+
 ```
 @article{achtibat2023attribution,
   title={From attribution maps to human-understandable explanations through Concept Relevance Propagation},
@@ -84,7 +88,7 @@ $ pip install zennit-crp[fast_img]
 Alternatively, install from a manually cloned repository to try out the tutorials:
 
 ```shell
-$ git clone https://github.com/rachtibat/zennit-crp
+$ git clone https://github.com/ipinmi/zennit-crp
 $ pip install ./zennit-crp
 ```
 
@@ -158,10 +162,10 @@ plot_grid(ref_c)
 ```
 
 ## Roadmap
+
 - [ ] Distributed HPC-Cluster support
 - [ ] Complete MaskHook Tutorial
 - [ ] Documentation
-
 
 ## Contributing
 
