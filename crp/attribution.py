@@ -395,7 +395,7 @@ class CondAttribution:
         ) as modified:
 
             if start_layer:
-                _ = modified(**data)
+                _ = modified(**data).logits
                 pred = layer_out[start_layer]
                 grad_mask = self.relevance_init(pred.detach().clone(), None, init_rel)
                 if start_layer in cond_l_names:
@@ -405,7 +405,7 @@ class CondAttribution:
                 )
 
             else:
-                pred = modified(**data)
+                pred = modified(**data).logits
                 grad_mask = self.relevance_init(
                     pred.detach().clone(), y_targets, init_rel
                 )
