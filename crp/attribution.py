@@ -412,7 +412,8 @@ class CondAttribution:
                 self.backward(
                     pred, grad_mask, exclude_parallel, cond_l_names, layer_out
                 )
-
+                print("embeds", data["inputs_embeds"].type())
+                print("pred", pred.type())
             attribution = self.heatmap_modifier(data["inputs_embeds"], on_device)
             activations, relevances = {}, {}
             if len(layer_out) > 0:
