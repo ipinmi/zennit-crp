@@ -128,9 +128,9 @@ class CondAttribution:
 
         return output_selection
 
-    def heatmap_modifier(self, data, on_device=None):
+    def heatmap_modifier(self, d, on_device=None):
 
-        heatmap = data.grad.detach()
+        heatmap = d.grad.detach()
         heatmap = heatmap.to(on_device) if on_device else heatmap
         return torch.sum(heatmap, dim=1)
 
