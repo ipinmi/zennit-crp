@@ -1,5 +1,5 @@
-from zennit.composites import NameMapComposite
-from zennit.core import Composite
+from zennit.src.zennit.composites import NameMapComposite
+from zennit.src.zennit.core import Composite
 from crp.hooks import MaskHook
 from crp.concepts import Concept, ChannelConcept
 from crp.graph import ModelGraph
