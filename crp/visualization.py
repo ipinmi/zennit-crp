@@ -9,14 +9,14 @@ import functools
 import inspect
 from tqdm import tqdm
 from zennit.src.zennit.composites import NameMapComposite, Composite
-from crp.attribution import CondAttribution
-from crp.maximization import Maximization
-from crp.concepts import ChannelConcept, Concept
-from crp.statistics import Statistics
-from crp.hooks import FeatVisHook
-from crp.helper import load_maximization, load_statistics, load_stat_targets
-from crp.image import vis_img_heatmap, vis_opaque_img
-from crp.cache import Cache
+from zennit_crp.crp.attribution import CondAttribution
+from zennit_crp.crp.maximization import Maximization
+from zennit_crp.crp.concepts import ChannelConcept, Concept
+from zennit_crp.crp.statistics import Statistics
+from zennit_crp.crp.hooks import FeatVisHook
+from zennit_crp.crp.helper import load_maximization, load_statistics, load_stat_targets
+from zennit_crp.crp.image import vis_img_heatmap, vis_opaque_img
+from zennit_crp.crp.cache import Cache
 
 
 class FeatureVisualization:
@@ -288,7 +288,7 @@ class FeatureVisualization:
 
     def cache_reference(func):
         """
-        Decorator for get_max_reference and get_stats_reference. If a crp.cache object is supplied to the FeatureVisualization object,
+        Decorator for get_max_reference and get_stats_reference. If a zennit_crp.crp.cache object is supplied to the FeatureVisualization object,
         reference samples are cached i.e. saved after computing a visualization with a 'plot_fn' (argument of get_max_reference) or
         loaded from the disk if available.
         """
@@ -379,7 +379,7 @@ class FeatureVisualization:
         """
         Retreive reference samples for a list of concepts in a layer. Relevance and Activation Maximization
         are availble if FeatureVisualization was computed for the mode. In addition, conditional heatmaps can be computed on reference samples.
-        If the crp.concept class (supplied to the FeatureVisualization layer_map) implements masking for a single neuron in the 'mask_rf' method,
+        If the zennit_crp.crp.concept class (supplied to the FeatureVisualization layer_map) implements masking for a single neuron in the 'mask_rf' method,
         the reference samples and heatmaps can be cropped using the receptive field of the most relevant or active neuron.
 
         Parameters:
@@ -460,7 +460,7 @@ class FeatureVisualization:
         """
         Retreive reference samples for a single concept in a layer wrt. different explanation targets i.e. returns the reference samples
         that are computed by self.compute_stats. Relevance and Activation are availble if FeatureVisualization was computed for the statitics mode.
-        In addition, conditional heatmaps can be computed on reference samples. If the crp.concept class (supplied to the FeatureVisualization layer_map)
+        In addition, conditional heatmaps can be computed on reference samples. If the zennit_crp.crp.concept class (supplied to the FeatureVisualization layer_map)
         implements masking for a single neuron in the 'mask_rf' method, the reference samples and heatmaps can be cropped using the receptive field of
         the most relevant or active neuron.
 
@@ -713,7 +713,7 @@ class FeatureVisualization:
 
         if self.Cache is None:
             raise ValueError(
-                "You must supply a crp.Cache object to the 'FeatureVisualization' class to precompute reference images!"
+                "You must supply a zennit_crp.crp.Cache object to the 'FeatureVisualization' class to precompute reference images!"
             )
 
         if composite is None:

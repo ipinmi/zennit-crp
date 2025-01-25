@@ -1,8 +1,8 @@
 from zennit.src.zennit.composites import NameMapComposite
 from zennit.src.zennit.core import Composite
-from crp.hooks import MaskHook
-from crp.concepts import Concept, ChannelConcept
-from crp.graph import ModelGraph
+from zennit_crp.crp.hooks import MaskHook
+from zennit_crp.crp.concepts import Concept, ChannelConcept
+from zennit_crp.crp.graph import ModelGraph
 from typing import Callable, List, Dict, Union, Tuple
 import torch
 import warnings

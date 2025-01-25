@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 import numpy as np
 import zennit.src.zennit.image as zimage
-from crp.helper import max_norm
+from zennit_crp.crp.helper import max_norm
 
 
 def get_crop_range(heatmap, crop_th):
@@ -274,12 +274,12 @@ def plot_grid(
     figsize=(6, 6),
 ):
     """
-    Plots dictionary of reference images as they are returned of the 'get_max_reference' method. To every element in the list crp.imgify is applied with its respective argument values.
+    Plots dictionary of reference images as they are returned of the 'get_max_reference' method. To every element in the list zennit_crp.crp.imgify is applied with its respective argument values.
 
     Parameters:
     ----------
     ref_c: dict with keys: integer and value: several lists filled with torch.Tensor, np.ndarray or PIL Image
-        To every element in the list crp.imgify is applied.
+        To every element in the list zennit_crp.crp.imgify is applied.
     resize: None or int
         If None, no resizing is applied. If int, sets the maximal aspect ratio of the image.
     padding: boolean
