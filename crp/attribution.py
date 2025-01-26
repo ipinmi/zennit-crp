@@ -132,7 +132,9 @@ class CondAttribution:
 
         heatmap = d.grad.detach()
         heatmap = heatmap.to(on_device) if on_device else heatmap
-        return torch.sum(heatmap, dim=1)
+        return torch.sum(
+            heatmap, dim=-1
+        )  # change from sum across sequence length to sum across embedding dimension
 
     def broadcast(self, data, conditions) -> Tuple[torch.Tensor, Dict]:
 
@@ -412,8 +414,8 @@ class CondAttribution:
                 self.backward(
                     pred, grad_mask, exclude_parallel, cond_l_names, layer_out
                 )
-                print("embeds", data["inputs_embeds"].type())
-                print("pred", pred.type())
+                # print("embeds", data["inputs_embeds"].type())
+                # print("pred", pred.type())
             attribution = self.heatmap_modifier(data["inputs_embeds"], on_device)
             activations, relevances = {}, {}
             if len(layer_out) > 0:
@@ -452,7 +454,7 @@ class CondAttribution:
             If set, a progressbar is displayed.
         """
 
-        self._check_arguments(data, conditions, start_layer, exclude_parallel, init_rel)
+        # self._check_arguments(data, conditions, start_layer, exclude_parallel, init_rel)
 
         # register on all layers in layer_map an empty hook
         hook_map, cond_l_names = {}, []
